@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
 
@@ -110,13 +111,15 @@ export default function PersistentDrawerLeft() {
             The BigCock
           </Typography>
           <Box sx={{ ml: 'auto' }}>
-            <IconButton
+            <Button onClick={() => navigate('/sign-in')}>Back to Sign-In Page</Button>
+
+            {/* <IconButton
               color="inherit"
               aria-label="right button"
               onClick={() => navigate('/sign-in')}
             >
               <HomeIcon />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>

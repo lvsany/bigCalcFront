@@ -17,6 +17,7 @@ import CalculateIcon from '@mui/icons-material/Calculate';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Alert from '@mui/material/Alert';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -128,9 +129,10 @@ export default function SignUp(props) {
     const formData = new FormData(event.currentTarget);
 
     const data = {
-      name: formData.get('name'),
+      user_name: formData.get('name'),
       email: formData.get('email'),
       password: formData.get('password'),
+      confirm_password: formData.get('confirmPassword'),
     };
 
     try {
@@ -140,14 +142,38 @@ export default function SignUp(props) {
       if (response.status === 200) {
         // Handle successful registration (e.g., redirect or display success message)
         console.log('注册成功:', response.data);
+        return (
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert severity="success">ohhhh yeah~~~~</Alert>
+            {/* <Alert severity="info">This is an info Alert.</Alert>
+            <Alert severity="warning">This is a warning Alert.</Alert>
+            <Alert severity="error">This is an error Alert.</Alert> */}
+          </Stack>
+        );
       }
     } catch (error) {
       if (error.response) {
         // Handle backend errors (e.g., user already exists, etc.)
         console.error('注册失败:', error.response.data);
+        return (
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            {/* <Alert severity="success">This is a success Alert.</Alert>
+            <Alert severity="info">This is an info Alert.</Alert>
+            <Alert severity="warning">This is a warning Alert.</Alert> */}
+            <Alert severity="error">ohhhhhh Fuck~~~~</Alert>
+          </Stack>
+        );
       } else {
         // Handle network errors
         console.error('网络错误:', error);
+        return (
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            {/* <Alert severity="success">This is a success Alert.</Alert> */}
+            {/* <Alert severity="info">This is an info Alert.</Alert> */}
+            <Alert severity="warning">are u crazy? why don't u have internet?</Alert>
+            {/* <Alert severity="error">This is an error Alert.</Alert> */}
+          </Stack>
+        );
       }
     }
   };
